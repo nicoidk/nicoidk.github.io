@@ -230,6 +230,7 @@ nextMeeting.addEventListener('click', function() {
 function updateCountdown() {
     const now = new Date();
     let countdown = countdownToMeeting();
+    
     nextMeeting.textContent = "Countdown to next meeting ▼\n" + countdown + (countdown == 1 ? " day " : " days ") + (35 - now.getHours()) % 24 + " hrs " + (99 - now.getMinutes() + 59) % 60 + " mins " + (60 - now.getSeconds()) + " seconds"
     nextMeeting.style.whiteSpace = "pre-line";
 }
@@ -237,7 +238,7 @@ function updateCountdown() {
 function countdownToMeeting() {
     const now = new Date();
     const currentDay = now.getDay();
-
+    
     let nextMeeting = currentDay; // day of the week
     let nextMeeting2 = now.getDate(); // day of the month
     while (true) {
