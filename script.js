@@ -1,307 +1,260 @@
-body {
-  /* Styling */
-  color: white;
-  background-color: #53416b;
-  font-family: 'Poppins';
-  font-size: 20px;
-  background-repeat: no-repeat;
-  background-size: cover;
+var showRoomNum = document.getElementById('showRoomNum');
+var isRoomClicked = false;
 
-  overflow: hidden;
+showRoomNum.addEventListener('click', function() {
+    if (!isRoomClicked) {
+        showRoomNum.textContent = "Room Number: ";
+        const text = "Room #3204 ◀";
+        let index = 0;
 
-  /* Positioning */
-  margin: 0;
-  padding: 0;
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+        function displayText() {
+            if (index < text.length) {
+                showRoomNum.textContent += text.charAt(index);
+                index++;
+                setTimeout(displayText, 10);
+            }
+        }
+
+        displayText();
+        isRoomClicked = true;
+    } else {
+        showRoomNum.textContent = 'Room Number ▶';
+        isRoomClicked = false;
+    }
+});
+
+showRoomNum.addEventListener('mouseenter', function() {
+    showRoomNum.classList.add('bolded'); // Add the 'highlighted' class
+});
+  
+  showRoomNum.addEventListener('mouseleave', function() {
+    showRoomNum.classList.remove('bolded'); // Remove the 'highlighted' class
+});
+
+/* ------------------------------------------------------------------ */
+
+var showClubHeads = document.getElementById('showClubHeads');
+var isHeadsClicked = false;
+
+showClubHeads.addEventListener('click', function() {
+    if (!isHeadsClicked) {
+        showClubHeads.textContent = "Club Heads: ";
+        const text = "Akul Arora, Kailash Radhakrishnan, Nicholas Kidston, Triet Duong ◀";
+        let index = 0;
+
+        function displayText() {
+            if (index < text.length) {
+                showClubHeads.textContent += text.charAt(index);
+                index++;
+                setTimeout(displayText, 10);
+            }
+        }
+
+        displayText();
+        isHeadsClicked = true;
+    } else {
+        showClubHeads.textContent = 'Club Heads ▶';
+        isHeadsClicked = false;
+    }
+});
+
+showClubHeads.addEventListener('mouseenter', function() {
+    showClubHeads.classList.add('bolded'); // Add the 'highlighted' class
+});
+  
+showClubHeads.addEventListener('mouseleave', function() {
+    showClubHeads.classList.remove('bolded'); // Remove the 'highlighted' class
+});
+
+/* ------------------------------------------------------------------ */
+
+var showContactInfo = document.getElementById("showContactInfo");
+var isContactClicked = false;
+
+showContactInfo.addEventListener('click', function() {
+    if (!isContactClicked) {
+        showContactInfo.textContent = "Mr. Stankovic (Supervisor): jovan.stankovic@ocdsb.ca"
+        isContactClicked = true;
+    } else {
+        showContactInfo.textContent = 'Contact Information! ▲';
+        isContactClicked = false;
+    }
+});
+
+showContactInfo.addEventListener('mouseenter', function() {
+    showContactInfo.classList.add('bolded'); // Add the 'highlighted' class
+});
+  
+showContactInfo.addEventListener('mouseleave', function() {
+    showContactInfo.classList.remove('bolded'); // Remove the 'highlighted' class
+});
+
+/* ------------------------------------------------------------------ */
+
+var showInsta = document.getElementById("showInsta");
+var isInstaClicked = false;
+
+showInsta.addEventListener('click', function() {
+    if (!isInstaClicked) {
+        showInsta.textContent = "@nhscodes ▼"
+        isInstaClicked = true;
+    } else {
+        showInsta.textContent = 'Instagram @ ▲';
+        isInstaClicked = false;
+    }
+});
+
+showInsta.addEventListener('mouseenter', function() {
+    showInsta.classList.add('bolded'); // Add the 'highlighted' class
+});
+  
+showInsta.addEventListener('mouseleave', function() {
+    showInsta.classList.remove('bolded'); // Remove the 'highlighted' class
+});
+
+/* ------------------------------------------------------------------ */
+
+var showClassroom = document.getElementById("showClassroom");
+var isClasroomClicked = false;
+
+showClassroom.addEventListener('click', function() {
+    if (!isClasroomClicked) {
+        showClassroom.textContent = "CODE: gw56rq6 ▼"
+        isClasroomClicked = true;
+    } else {
+        showClassroom.textContent = 'Google Classroom # ▲';
+        isClasroomClicked = false;
+    }
+});
+
+showClassroom.addEventListener('mouseenter', function() {
+    showClassroom.classList.add('bolded'); // Add the 'highlighted' class
+});
+  
+showClassroom.addEventListener('mouseleave', function() {
+    showClassroom.classList.remove('bolded'); // Remove the 'highlighted' class
+});
+
+/* ------------------------------------------------------------------ */
+
+var main = document.getElementById("main");
+var listMain_clickable = true;
+let listMain = [
+    'Create', 'Innovate', 'Experiment', 'Develop', 'Explore',
+    'Analyze', 'Adapt', 'Improve', 'Strategize', 'Solve',
+    'Achieve', 'Excel', 'Interpret', 'Enhance', 'Progress',
+    'Design', 'Collab', 'Inspire', 'Transform', 'Create', 
+    'Innovate', 'Experiment', 'Develop', 'Explore',
+    'Analyze', 'Adapt', 'Improve', 'Strategize', 'Solve',
+    'Achieve', 'Excel', 'Interpret', 'Enhance', 'Progress',
+    'Design', 'Collab', 'Inspire', 'Transform', 'Code']; 
+
+  var index = 0;
+
+  main.addEventListener('click', function() {
+    if (listMain_clickable == true){
+        listMain_clickable = false;
+        index = 0;
+        displayText();
+    }
+  })
+
+function displayText() {
+    main.textContent = "Learn to... " + listMain[index];
+    index++;
+    if(index <= 38){
+        setTimeout(displayText, 70);
+    }else{
+        listMain_clickable = true;
+    }
 }
 
-hr {
-  border: 1px solid black;
+/* ------------------------------------------------------------------ */
+
+const dvdSquare = document.getElementById('dvdSquare');
+
+let x = Math.floor(Math.random() * 1000);
+let y = Math.floor(Math.random() * 1000);;
+let dx = 5;
+let dy = 5;
+const squareSize = 20;
+
+function moveSquare() {
+  x += dx;
+  y += dy;
+
+  if (x + squareSize > window.innerWidth || x < 0) {
+    dx *= -1;
+  }
+
+  if (y + squareSize > window.innerHeight || y < 0) {
+    dy *= -1;
+  }
+
+  dvdSquare.style.left = x + 'px';
+  dvdSquare.style.top = y + 'px';
+
+  requestAnimationFrame(moveSquare);
 }
 
-header {
-  /* Styling */
-  color: #000000;
-  background-color: white;
-  font-size:17px;
+moveSquare();
 
-  /* Positioning */
-  text-align: left;
-  align-items: center;
-  padding: 5px;
-  left: 0;
-  width: 100%;
-  display: flex;
+/* ------------------------------------------------------------------ */
 
+var nextMeeting = document.getElementById("nextMeeting");
+var isMeetingClicked = false;
+
+nextMeeting.addEventListener('mouseenter', function() {
+    nextMeeting.classList.add('bolded'); // Add the 'highlighted' class
+});
+  
+nextMeeting.addEventListener('mouseleave', function() {
+    nextMeeting.classList.remove('bolded'); // Remove the 'highlighted' class
+});
+
+let intervalId; // Global variable to hold the interval ID
+
+nextMeeting.addEventListener('click', function() {
+    const now = new Date();
+    if (isMeetingClicked) {
+        nextMeeting.textContent = "Next Meeting! ▲";
+        isMeetingClicked = false;
+        clearInterval(intervalId); // Stop the countdown interval
+    } else {
+        isMeetingClicked = true;
+        intervalId = setInterval(updateCountdown, 1000); // Start the countdown interval
+        updateCountdown(); // Update immediately when the button is clicked
+    }
+});
+
+function updateCountdown() {
+    const now = new Date();
+    let countdown = countdownToMeeting();
+    nextMeeting.textContent = "Countdown to next meeting ▼\n" + countdown + (countdown == 1 ? " day " : " days ") + (35 - now.getHours()) % 24 + " hrs " + (99 - now.getMinutes() + 59) % 60 + " mins " + (60 - now.getSeconds()) + " seconds"
+    nextMeeting.style.whiteSpace = "pre-line";
 }
 
-footer {
-  /* Styling */
-  color: white;
-  text-align: center;
-  font-size: 10px;
+function countdownToMeeting() {
+    const now = new Date();
+    const currentDay = now.getDay();
 
-  /* Positioning */
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%; 
+    let nextMeeting = currentDay; // day of the week
+    let nextMeeting2 = now.getDate(); // day of the month
+    while (true) {
+        if ((nextMeeting % 7 === 1 || nextMeeting % 7 === 2) && nextMeeting2 % 2 === 1) {
+            return (nextMeeting + 7 - currentDay) %7 - 1;
+        } else {
+            nextMeeting++;
+            nextMeeting2++;
+        }
+    }
 }
 
-.showContactInfo {
-  /* Styling */
-  color: black;
-  background: linear-gradient(45deg, #b176d8,lightgreen, #b176d8);
-  text-align: center;
-  cursor: pointer;
-  font-size: 15px;
+/* ------------------------------------------------------------------ */
 
-  /* Positioning */
-  position: fixed;
-  bottom: 170px;
-  right: 20px;
-  padding: 0px 15px;
-  border-radius: 15px;
-  border: 3px solid black;
-  width: 200px;
-}
+var homepage_Logo = document.getElementById("homepage_Logo");
 
-.showClassroom {
-  /* Styling */
-  color: black;
-  background: linear-gradient(45deg, #b176d8,rgb(121, 212, 224), #b176d8);
-  text-align: center;
-  cursor: pointer;
-  font-size: 15px;
-
-  /* Positioning */
-  position: fixed;
-  bottom: 100px;
-  right: 20px;
-  padding: 0px 15px;
-  border-radius: 15px;
-  border: 3px solid black;
-  width: 200px;
-}
-
-.showInsta {
-  /* Styling */
-  color: black;
-  background: linear-gradient(45deg, #b176d8, #df5c5c, #e7ad5a, #b176d8);
-  text-align: center;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 500;
-
-  /* Positioning */
-  position: fixed;
-  bottom: 35px;
-  right: 20px;
-  padding: 0px 15px;
-  border-radius: 15px;
-  border: 3px solid black;
-  width: 200px;
-}
-
-.nextMeeting {
-  /* Styling */
-  color: black;
-  background: linear-gradient(45deg, #b176d8, #e6c868, #b176d8);
-  text-align: center;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 500;
-
-  /* Positioning */
-  position: fixed;
-  bottom: 35px;
-  left: 20px;
-  border-radius: 15px;
-  border: 3px solid black;
-  width: 250px;
-}
-
-.main {
-  /* Styling */
-  background: linear-gradient(to right, rgb(52, 80, 175), rgb(59, 199, 94));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: white;
-  text-align: center;
-  cursor: pointer;
-  font-size: 5vw;
-  font-weight: bold;
-
-  /* Positioning */
-  position: absolute;
-  width: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-img {
-  margin-right: 10px;
-}
-
-.stars-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.star {
-  position: absolute;
-  background-color: #fff;
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.star:nth-child(1) {
-  width: 10px;
-  height: 10px;
-  top: 20%;
-  left: 30%;
-}
-
-.star:nth-child(2) {
-  width: 15px;
-  height: 15px;
-  top: 50%;
-  left: 80%;
-}
-
-.star:nth-child(3) {
-  width: 8px;
-  height: 8px;
-  top: 80%;
-  left: 50%;
-}
-
-.star:nth-child(4) {
-  width: 12px;
-  height: 12px;
-  top: 30%;
-  left: 40%;
-}
-
-.star:nth-child(5) {
-  width: 6px;
-  height: 6px;
-  top: 30%;
-  left: 60%;
-}
-
-.star:nth-child(6) {
-  width: 15px;
-  height: 15px;
-  top: 90%;
-  left: 10%;
-}
-
-.star:nth-child(7) {
-  width: 15px;
-  height: 15px;
-  top: 45%;
-  left: 20%;
-}
-
-.star:nth-child(8) {
-  width: 5px;
-  height: 5px;
-  top: 10%;
-  left: 10%;
-}
-
-.star:nth-child(9) {
-  width: 15px;
-  height: 15px;
-  top: 70%;
-  left: 80%;
-}
-
-.star:nth-child(10) {
-  width: 6px;
-  height: 6px;
-  top: 90%;
-  left: 70%;
-}
-
-.star:nth-child(11) {
-  width: 10px;
-  height: 10px;
-  top: 20%;
-  left: 90%;
-}
-
-#dvdSquare {
-  width: 20px;
-  height: 20px;
-  border: 3px solid black;
-  position: absolute;
-  background-color: white;
-  z-index: 9999;
-}
-
-#showRoomNum {
-  cursor: pointer; 
-  transition: font-weight 0.1s ease; 
-}
-
-#showRoomNum.bolded {
-  font-weight: bold;
-}
-
-#showClubHeads {
-  cursor: pointer; 
-  transition: font-weight 0.1s ease; 
-}
-
-#showClubHeads.bolded {
-  font-weight: bold;
-}
-
-#showClassroom {
-  cursor: pointer; 
-  transition: font-weight 0.1s ease; 
-}
-
-#showClassroom.bolded{
-  font-weight: bold;
-  font-size: 110%;
-}
-
-#showContactInfo {
-  cursor: pointer; 
-  transition: font-weight 0.1s ease; 
-}
-
-#showContactInfo.bolded {
-  font-weight: bold;
-  font-size: 105%;
-}
-
-#showInsta {
-  cursor: pointer; 
-  transition: font-weight 0.1s ease; 
-}
-
-#showInsta.bolded {
-  font-weight: bold;
-  font-size: 110%;
-}
-
-#nextMeeting {
-  cursor: pointer; 
-  transition: font-weight 0.1s ease; 
-}
-
-#nextMeeting.bolded {
-  font-weight: bold;
-  font-size: 110%;
-}
+homepage_Logo.addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default link behavior
+    window.location.href = window.location.href; // Redirect to the current URL
+});
