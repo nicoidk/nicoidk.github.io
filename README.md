@@ -1,1 +1,0 @@
-# nicoidk.github.io
