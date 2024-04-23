@@ -126,6 +126,9 @@ footer {
 
 .main {
   /* Styling */
+  background: linear-gradient(to right, rgb(52, 80, 175), rgb(59, 199, 94));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: white;
   text-align: center;
   cursor: pointer;
