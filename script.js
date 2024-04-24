@@ -231,7 +231,7 @@ function updateCountdown() {
     const now = new Date();
     let countdown = countdownToMeeting();
     if(countdownToMeeting() < 0){
-        nextMeeting.textContent = "Contdown to next meeting▼\nTODAY AT 11:40!!"; 
+        nextMeeting.textContent = "Countdown to next meeting▼\nTODAY AT 11:40!!"; 
     }else{
     nextMeeting.textContent = "Countdown to next meeting ▼\n" + countdown + (countdown == 1 ? " day " : " days ") + (35 - now.getHours()) % 24 + " hrs " + (99 - now.getMinutes() + 59) % 60 + " mins " + (60 - now.getSeconds()) + " seconds"
     }
