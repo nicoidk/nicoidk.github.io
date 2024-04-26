@@ -160,6 +160,8 @@ img {
   background-color: #fff;
   border-radius: 50%;
   pointer-events: none;
+  box-shadow: 0 0 10px 0 white;
+
 }
 
 .star:nth-child(1) {
