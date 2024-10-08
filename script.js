@@ -243,13 +243,11 @@ function countdownToMeeting() {
     const currentDay = now.getDay();
     
     let nextMeeting = currentDay; // day of the week
-    let nextMeeting2 = now.getDate(); // day of the month
     while (true) {
-        if ((nextMeeting % 7 === 1 || nextMeeting % 7 === 2) && nextMeeting2 % 2 === 1) {
+        if (nextMeeting % 7 === 4) {
             return (nextMeeting + 7 - currentDay) %7 - 1;
         } else {
             nextMeeting++;
-            nextMeeting2++;
         }
     }
 }
