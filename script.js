@@ -39,7 +39,7 @@ var isHeadsClicked = false;
 showClubHeads.addEventListener('click', function() {
     if (!isHeadsClicked) {
         showClubHeads.textContent = "Club Heads: ";
-        const text = "Akul Arora, Kailash Radhakrishnan, Nicholas Kidston, Triet Duong ◀";
+        const text = "Akul Arora, Kailash Radhakrishnan, Nicholas Kidston ◀";
         let index = 0;
 
         function displayText() {
